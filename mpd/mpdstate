@@ -1,0 +1,70 @@
+sw_volume: 100
+audio_device_state:1:pulse audio
+audio_device_state:1:my_fifo
+state: play
+current: 22
+time: 3.970000
+random: 0
+repeat: 0
+single: 0
+consume: 0
+crossfade: 0
+mixrampdb: 0.000000
+mixrampdelay: -1.000000
+playlist_begin
+0:01 - Nekobasu (prod Baba Stiltz).mp3
+1:01 - Damn Gud Shawty.mp3
+2:02 - The 5th Element.mp3
+3:02 - Buildings ft Thaiboy Digital  Bladee (prod Tokyo Hands WhiteArmor  Yung Sherman).mp3
+4:04 - Stevie Nicks.mp3
+5:$uicideboy$ - KILL YOURSELF Part VIII- THE SEPPUKU SAGA - 01 Tempura.mp3
+6:$uicideboy$ - KILL YOURSELF Part VIII- THE SEPPUKU SAGA - 01 Tempura.mp3
+7:$uicideboy$ - KILL YOURSELF Part VIII- THE SEPPUKU SAGA - 02 Bag$.mp3
+8:$uicideboy$ - KILL YOURSELF Part VIII- THE SEPPUKU SAGA - 03 Kamehameha (Kamikaze Remix).mp3
+9:$uicideboy$ - KILL YOURSELF Part VIII- THE SEPPUKU SAGA - 04 Vietnam -Bonus Track-.mp3
+10:Yung Lean - Oreomilkshake.mp3
+11:03 - Plastic G-Shock.mp3
+12:04 - Kyoto (prod Yung Gud).mp3
+13:07 - Motorola (prod Whitearmor).mp3
+14:Yung Lean - Oreomilkshake.mp3
+15:Yung Lean - Ginseng Strip 2002.mp3
+16:Yung Lean - Greygoose.mp3
+17:Yung Lean - Unknown Death 2002 - 01 Welcome 2 Unknown Death -Prod. Yung Sherman-.mp3
+18:Yung Lean - Unknown Death 2002 - 02 Nitevision (feat. Bladee) -Prod. Yung Gud-.mp3
+19:Yung Lean - Unknown Death 2002 - 03 Oceans 2001 -Prod. Gregar-.mp3
+20:Yung Lean - Unknown Death 2002 - 04 Gatorade -Prod. Yung Gud-.mp3
+21:Yung Lean - Unknown Death 2002 - 05 Hurt -Prod. Suicideyear-.mp3
+22:Yung Lean - Unknown Death 2002 - 06 Lightsaber - Saviour -Prod. Yung Sherman-.mp3
+23:Yung Lean - Unknown Death 2002 - 07 Princess Daisy -Prod. Yung Gud-.mp3
+24:Yung Lean - Unknown Death 2002 - 08 Lemonade (feat. Baba Stiltz) -Prod. Yung Sherman-.mp3
+25:Yung Lean - Unknown Death 2002 - 09 Emails -Prod. White Armor-.mp3
+26:Yung Lean - Unknown Death 2002 - 10 Deathstar - Getting Benjamins -Prod. White Armor-.mp3
+27:Yung Lean - Unknown Death 2002 - 11 Heal You - Bladerunner (feat. Bladee) -Prod. White Armor-.mp3
+28:Yung Lean - Unknown Death 2002 - 12 Solarflare -Prod. Friendzone-.mp3
+29:01. Blommor (Intro).mp3
+30:02. Blinded.mp3
+31:03. Sunrise Angel.mp3
+32:04. Yoshi City.mp3
+33:05. Ice Cold Smoke.mp3
+34:06. Dog Walk (Intermission).mp3
+35:07. Don't Go.mp3
+36:08. Ghosttown (Ft. Travi$ Scott).mp3
+37:09. Monster.mp3
+38:10. Volt.mp3
+39:11. Leanworld.mp3
+40:12. Sandman.mp3
+41:13. Helt Ensam (Outro).mp3
+42:01 Warlord.mp3
+43:02 God Only Knows.mp3
+44:03 Crystal Clear Ice.mp3
+45:04 Eye Contact.mp3
+46:05 Creepin' (feat. Benjamin).mp3
+47:06 More Stacks.mp3
+48:07 Hokus Pokus.mp3
+49:08 Buzz.mp3
+50:09 Stars Align.mp3
+51:10 Energy.mp3
+52:11 Highway Patrol.mp3
+53:12 Forest Fire.mp3
+54:13 Miami.mp3
+playlist_end
