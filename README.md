@@ -5,4 +5,4 @@ some things you need to do:
 install these fonts:
 "Dina" and "Unifont" and "Font Awesome"
 
-![ebic screenshot](screenshot.png?raw=true "ebic screenshot")
+![ebic screenshot](neoscreenshot.png?raw=true "ebic screenshot")
