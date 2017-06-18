@@ -9,11 +9,12 @@ primary = #efefef
 secondary = #efefef
 alert = #bd2c40
 
-[bar/example]
-monitor = ${env:MONITOR:eDP1}
+[bar/tv]
+monitor = ${env:MONITOR:DP1}
+monitor-strict = false
 width = 100%
+offset-x = 10%
 height = 30
-;offset-x = 1%
 ;offset-y = 1%
 ;radius = 6.0
 fixed-center = true
@@ -24,8 +25,8 @@ foreground = ${colors.foreground}
 line-size = 3
 line-color = #efefef
 
-border-size = 4
-border-color = #00000000
+border-size = 2
+border-color = #161616
 
 padding-left = 0
 padding-right = 2
@@ -36,10 +37,62 @@ module-margin-right = 2
 font-0 = dina:pixelsize=11;1
 font-1 = dina:fontformat=truetype:size=8:antialias=false;0
 font-2 = fontawesome:pixelsize=10;1
+font-3 = MaterialIcons:size=10
+
+modules-left =
+modules-center = date
+modules-right = 
+;pomodoro filesystem xbacklight volume memory cpu battery date menu0
+
+;tray-position = right
+;tray-padding = 2
+;tray-transparent = true
+;tray-background = #0063ff
+
+;wm-restack = bspwm
+wm-restack = i3
+
+;override-redirect = true
+
+;scroll-up = bspwm-desknext
+;scroll-down = bspwm-deskprev
+
+;scroll-up = i3wm-wsnext
+;scroll-down = i3wm-wsprev
+
+
+[bar/laptop]
+monitor = ${env:MONITOR:eDP1}
+width = 100%
+height = 30
+offset-x = 0%
+offset-y = 0%
+;radius = 6.0
+fixed-center = false
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 3
+line-color = #efefef
+
+border-size = 2
+border-color = #161616
+
+padding-left = 1
+padding-right = 1
+
+module-margin-left = 1
+module-margin-right = 2
+
+font-0 = dina:pixelsize=11;1
+font-1 = dina:fontformat=truetype:size=8:antialias=false;0
+font-2 = fontawesome:pixelsize=10;1
+font-3 = MaterialIcons:size=10
 
 modules-left = i3 mpd
 modules-center = 
-modules-right = filesystem xbacklight volume memory cpu battery temperature date menu0
+modules-right = pomodoro filesystem xbacklight volume wlan memory cpu battery date menu0
 
 tray-position = right
 tray-padding = 2
@@ -56,6 +109,12 @@ wm-restack = i3
 
 ;scroll-up = i3wm-wsnext
 ;scroll-down = i3wm-wsprev
+
+[module/redshift]
+type = custom/script
+interval = 5
+
+exec = ~/.config/polybar/redshift.sh
 
 [module/menu0]
 type = custom/menu
@@ -76,6 +135,21 @@ menu-0-2 = " cancel"
 
 label-open = 
 label-close =
+
+[module/pomodoro]
+type = custom/script
+exec = pymodoro --break-prefix " " --pomodoro-prefix " " --pomodoro ─ --empty "  " --break  --length 5
+; Use default symbols
+;exec = pymodoro --length 5
+label = %output%
+tail = true
+interval = 0
+; Start or reset the timer
+click-left = if [ -e ~/.pomodoro_session ]; then rm ~/.pomodoro_session; else echo "25 5" > ~/.pomodoro_session; fi
+; Increase pomodoro time
+click-right = echo "$((`cut .pomodoro_session -d ' ' -f 1`+5)) 5" > .pomodoro_session
+; Reduce pomodoro time
+click-middle = echo "$((`cut .pomodoro_session -d ' ' -f 1`-5)) 5" > .pomodoro_session
 
 [module/pkg]
 type = custom/script
@@ -157,7 +231,7 @@ pin-workspaces = true
 
 ; This will split the workspace name on ':'
 ; Default: false
-strip-wsnumbers = true
+strip-wsnumbers = false
 
 ; Sort the workspaces by index instead of the default
 ; sorting that groups the workspaces by output
@@ -185,25 +259,28 @@ reverse-scroll = false
 ; Example: code;♚ will apply the icon to all workspaces 
 ; containing 'code' in the label
 ; Default: false
-fuzzy-match = true
+fuzzy-match = false
 
-label-focused-underline = #efefef
+;label-focused-underline = #efefef
 
-label-focused = 
-label-unfocused = 
-label-urgent = 
-label-visible = 
+;label-focused = ~
+;label-unfocused = ·
+;label-urgent = !
+;label-visible = ·
 
-label-focused-padding = 2
-label-unfocused-padding = 2
-label-urgent-padding = 2
-label-visible-padding = 2
+label-unfocused-foreground = #8c8c8c
+
+label-focused-padding = 1
+label-unfocused-padding = 1
+label-urgent-padding = 1
+label-visible-padding = 1
 
 [module/mpd]
 type = internal/mpd
-format-online = <bar-progress> <label-time>  <label-song>
+format-online =  <bar-progress> <label-time>  <label-song>
+;format-online = <icon-prev> <icon-seekb> <icon-stop> <toggle> <icon-seekf> <icon-next>  <icon-repeat> <icon-random>  <bar-progress> <label-time>  <label-song>
 host = 127.0.0.1
-port = 6601
+port = 6600
 label-song = 𝄞%artist% - %title%
 icon-play = ⏵
 icon-pause = ⏸
@@ -216,7 +293,7 @@ icon-random = 🔀
 icon-repeat = 🔁
 icon-repeatone = 🔂
 
-bar-progress-width = 30
+bar-progress-width = 20
 bar-progress-indicator = |
 bar-progress-fill = ─
 bar-progress-empty = ─
@@ -262,9 +339,13 @@ format-prefix-foreground = ${colors.foreground-alt}
 ;format-underline = #4bffdc
 label = %percentage_used%%
 
+[module/wireless-network]
+type = internal/network
+interface = wlp1s0
+
 [module/wlan]
 type = internal/network
-interface = 
+interface = wlp1s0 
 interval = 3.0
 
 format-connected = <ramp-signal> <label-connected>
@@ -323,7 +404,6 @@ format-volume = <label-volume> <bar-volume>
 label-volume = 
 label-volume-foreground = ${root.foreground}
 
-format-muted-prefix = " "
 format-muted-foreground = ${colors.foreground-alt}
 label-muted = sound muted
 
@@ -356,20 +436,21 @@ format-charging = <animation-charging> <label-charging>
 format-discharging = <ramp-capacity> <label-discharging>
 ;format-discharging-underline = ${self.format-charging-underline}
 
-format-full-prefix = " "
-format-full-prefix-foreground = ${colors.foreground-alt}
+format-full-prefix = " "
+format-full-prefix-foreground = #efefef
 ;format-full-underline = ${self.format-charging-underline}
 
-ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
-ramp-capacity-foreground = ${colors.foreground-alt}
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-foreground = #efefef
 
-animation-charging-0 = 
-animation-charging-1 = 
-animation-charging-2 = 
-animation-charging-foreground = ${colors.foreground-alt}
-animation-charging-framerate = 750
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-foreground = #efefef
+animation-charging-framerate = 2000
 
 [module/temperature]
 type = internal/temperature
@@ -383,12 +464,12 @@ format-warn = <ramp> <label-warn>
 
 label = %temperature%
 label-warn = %temperature%
-label-warn-foreground = ${colors.secondary}
+label-warn-foreground = #efefef
 
-ramp-0 = 
-ramp-1 = 
-ramp-2 = 
-ramp-foreground = ${colors.foreground-alt}
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+ramp-foreground = #efefef
 
 [module/powermenu]
 type = custom/menu
